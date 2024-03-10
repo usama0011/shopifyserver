@@ -14,6 +14,10 @@ const orderschema = new Schema(
       ref: "Order",
       required: true,
     },
+    status: {
+      type: String,
+      default: "complete",
+    },
   },
   { timestamps: true }
 );

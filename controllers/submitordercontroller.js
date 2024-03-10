@@ -1,9 +1,21 @@
 import SubmitOrders from "../models/submitordersmodel.js";
-
+import OrderModel from "../models/ordermodel.js";
 export const GetAllSubmitedOrders = async (req, res, next) => {
   try {
-    const orderrecord = await SubmitOrders.find();
-    res.status(200).json(orderrecord);
+    const query = {};
+    if (req.user.isAdmin) {
+    } else if (!req.user.isAdmin) {
+      query.userId = req.user.user_id;
+    }
+    const submittedOrders = await SubmitOrders.find(query);
+    const ordersWithDetails = await Promise.all(
+      submittedOrders.map(async (order) => {
+        const orderDetail = await OrderModel.findById(order.orderId);
+        return { ...order.toObject(), orderDetail };
+      })
+    );
+
+    res.status(200).json(ordersWithDetails);
   } catch (error) {
     console.error("Error getting Customers records:", error);
     res
@@ -19,6 +31,7 @@ export const GetSingleSubmitOrder = async (req, res, next) => {
     if (!singleorderrecord) {
       return res.status(404).json({ error: "Submitorder  record not found" });
     }
+
     res.status(200).json(singleorderrecord);
   } catch (error) {
     console.error("Error getting submit order record by ID:", error);
