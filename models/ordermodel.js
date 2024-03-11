@@ -34,6 +34,7 @@ const orderSchema = new Schema(
     },
     orderImage: {
       type: String,
+      default: "https://img.icons8.com/?size=80&id=Po25L2kPRlrh&format=png",
     },
   },
   { timestamps: true }
