@@ -17,7 +17,7 @@ export const GetallOrders = async (req, res, next) => {
     const ordersToDisplay = allOrders.filter(
       (order) => !submittedOrderStrings.includes(order._id.toString())
     );
-    
+
     res.status(200).json(ordersToDisplay);
   } catch (error) {
     console.error("Error getting orders records:", error);
@@ -50,9 +50,20 @@ export const CreateOrder = async (req, res, next) => {
       orderstatus,
       ordercost,
       ordercommission,
+      frozenamount,
       orderimage,
+      depositedrequired,
     } = req.body;
-
+    console.log(
+      userId,
+      ordername,
+      orderstatus,
+      ordercost,
+      ordercommission,
+      frozenamount,
+      orderimage,
+      depositedrequired
+    );
     // Check if a Order with the same name already exists for the given branch
     const expistingorder = await OrderModel.findOne({
       ordername,
@@ -66,11 +77,13 @@ export const CreateOrder = async (req, res, next) => {
     // Create a new Order instance
     const newOrder = new OrderModel({
       userId,
-      ordername,
-      orderstatus,
-      ordercost,
-      ordercommission,
-      orderimage,
+      orderName: ordername,
+      orderStatus: orderstatus,
+      orderCost: ordercost,
+      orderCommission: ordercommission,
+      frozenAmount: frozenamount,
+      orderImage: orderimage,
+      depositedrequired: depositedrequired,
     });
 
     // Save the record to the database

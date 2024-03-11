@@ -104,6 +104,9 @@ export const LoginUser = async (req, res) => {
         email: user.email,
         phonenumber: user.phonenumber,
         isAdmin: user.isAdmin,
+        frozenAmount: user.frozenamount,
+        orderQuantity: user.orderquantitiy,
+        availableBalance: user.availableBalance,
       });
   } catch (error) {
     console.log(error.message);

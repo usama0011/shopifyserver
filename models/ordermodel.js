@@ -1,35 +1,42 @@
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
-// Admin can only created users
-const orderschema = new Schema(
+
+const orderSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    ordername: {
+    orderName: {
       type: String,
       required: true,
     },
-    orderstatus: {
+    orderStatus: {
       type: String,
       required: true,
     },
-    ordercost: {
+    depositedrequired: {
+      type: Number,
+    },
+    orderCost: {
       type: Number,
       required: true,
     },
-    ordercommission: {
+    orderCommission: {
       type: Number,
       required: true,
     },
-    orderimage: {
+    frozenAmount: {
+      type: Number,
+      required: true,
+    },
+    orderImage: {
       type: String,
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Order", orderschema);
+export default mongoose.model("Order", orderSchema);

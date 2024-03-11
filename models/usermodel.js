@@ -27,7 +27,7 @@ const userSchema = new Schema(
     },
     availableBalance: {
       type: Number,
-      default: 0,
+      default: 20, // Initial balance for new users
     },
     totalOrdes: {
       type: Number,
