@@ -46,14 +46,6 @@ export const CreateanewSubmitOrder = async (req, res, next) => {
     const { userId, orderId } = req.body;
 
     // Check if a Order with the same name already exists for the given branch
-    const expistingorder = await SubmitOrders.findOne({
-      orderId,
-    });
-    if (expistingorder) {
-      return res.status(400).json({
-        message: "Order with the Id Alread submiteed",
-      });
-    }
 
     // Create a new Order instance
     const newCustomerquery = new SubmitOrders({
