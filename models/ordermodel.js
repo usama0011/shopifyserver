@@ -17,9 +17,6 @@ const orderSchema = new Schema(
       type: String,
       required: true,
     },
-    depositedrequired: {
-      type: Number,
-    },
     orderCost: {
       type: Number,
       required: true,
