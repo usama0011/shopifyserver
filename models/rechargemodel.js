@@ -10,7 +10,7 @@ const rechargeSchema = new Schema(
       required: true,
     },
     rechargeamount: {
-      type: String,
+      type: Number,
       required: true,
     },
     transcationId: {

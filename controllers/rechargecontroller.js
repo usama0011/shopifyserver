@@ -36,7 +36,7 @@ export const CreateRecharge = async (req, res, next) => {
     const newRecharge = new RechargeModel({
       userId,
       rechargeamount,
-      transactionId,
+      transcationId:transactionId,
       selectnetwork,
     });
 
