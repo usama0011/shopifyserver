@@ -29,6 +29,9 @@ const orderSchema = new Schema(
       type: Number,
       required: true,
     },
+    depositedrequired: {
+      type: Number,
+    },
     orderImage: {
       type: String,
       default: "https://img.icons8.com/?size=80&id=Po25L2kPRlrh&format=png",

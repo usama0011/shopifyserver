@@ -49,7 +49,7 @@ const userSchema = new Schema(
       type: Number,
       default: 0,
     },
-    orderquantitiy: {
+    frozenamount: {
       type: Number,
       default: 0,
     },
