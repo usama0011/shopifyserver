@@ -31,12 +31,12 @@ export const GetSingleRecharge = async (req, res, next) => {
 
 export const CreateRecharge = async (req, res, next) => {
   try {
-    const { userId, rechargeamount, transactionId, selectnetwork } = req.body;
-
+    const { userId, rechargeamount, transcationId, selectnetwork } = req.body;
+    console.log(userId, rechargeamount, transcationId, selectnetwork);
     const newRecharge = new RechargeModel({
       userId,
       rechargeamount,
-      transcationId:transactionId,
+      transcationId: transcationId,
       selectnetwork,
     });
 
