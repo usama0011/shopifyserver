@@ -49,10 +49,6 @@ const userSchema = new Schema(
       type: Number,
       default: 0,
     },
-    frozenamount: {
-      type: Number,
-      default: 0,
-    },
     isAdmin: {
       type: Boolean,
       default: false,
@@ -67,7 +63,7 @@ const userSchema = new Schema(
     referralCode: {
       type: String,
       unique: true,
-      sparse: true, // Allows multiple documents to have a null value for the referralCode
+      sparse: true, 
     },
   },
   { timestamps: true }

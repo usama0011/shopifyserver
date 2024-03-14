@@ -38,7 +38,7 @@ export const RegisteredUser = async (req, res) => {
 
     // Send verification email
     const mailOptions = {
-      from: "Shopifycallinquiries2020@gmail.com",
+      from: "za5232208@gmail.com",
       to: email,
       subject: "Email Verification",
       text: `Your verification code is: ${verificationCode}`,
