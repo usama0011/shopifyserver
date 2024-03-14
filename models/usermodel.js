@@ -63,7 +63,11 @@ const userSchema = new Schema(
     referralCode: {
       type: String,
       unique: true,
-      sparse: true, 
+      sparse: true,
+    },
+    orderquantitiy: {
+      type: Number,
+      default: 0,
     },
   },
   { timestamps: true }
