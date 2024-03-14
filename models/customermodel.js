@@ -18,7 +18,7 @@ const CustomerSchema = new Schema(
       required: true,
     },
     message: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
