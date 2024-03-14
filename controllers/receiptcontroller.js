@@ -12,12 +12,16 @@ export const createRechargeReceipt = async (req, res) => {
   }
 };
 
-// GET all recharge receipts
 export const getAllRechargeReceipts = async (req, res) => {
   try {
-    const rechargeReceipts = await RechargeReceipt.find({
-      userId: req.user.user_id,
-    });
+    let query = {};
+
+    // If the user is not an admin, filter receipts by user ID
+    if (!req.user.isAdmin) {
+      query.userId = req.user.user_id;
+    }
+
+    const rechargeReceipts = await RechargeReceipt.find(query);
     res.status(200).json(rechargeReceipts);
   } catch (error) {
     res.status(500).json({ message: error.message });
