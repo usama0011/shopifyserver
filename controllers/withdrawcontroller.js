@@ -2,15 +2,21 @@ import WidthdrawalModel from "../models/withdrawalmodel.js";
 
 export const GetAllWithdrawal = async (req, res, next) => {
   try {
-    const taskRecord = await WidthdrawalModel.find();
-    res.status(200).json(taskRecord);
+    let withdrawalRecords;
+    if (req.user.isAdmin) {
+      // If the user is an admin, fetch all withdrawal records
+      withdrawalRecords = await WidthdrawalModel.find();
+    } else {
+      // If the user is not an admin, fetch only their own withdrawal records
+      withdrawalRecords = await WidthdrawalModel.find({ userId: req.user.user_id });
+    }
+    res.status(200).json(withdrawalRecords);
   } catch (error) {
-    console.error("Error getting tasks records:", error);
-    res
-      .status(500)
-      .json({ error: "Internal Server Error", errormsg: error.message });
+    console.error("Error getting withdrawal records:", error);
+    res.status(500).json({ error: "Internal Server Error", errormsg: error.message });
   }
 };
+
 
 export const GetSingleWithdrawal = async (req, res, next) => {
   try {

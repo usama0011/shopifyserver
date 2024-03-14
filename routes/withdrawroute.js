@@ -6,10 +6,11 @@ import {
   UpdateWithdrawal,
   DeleteWithdrawal,
 } from "../controllers/withdrawcontroller.js";
+import { AuthenticatedMiddlewareBoth } from "../middleware/middleware.js";
 
 const router = express.Router();
 
-router.get("/", GetAllWithdrawal);
+router.get("/", AuthenticatedMiddlewareBoth, GetAllWithdrawal);
 router.get("/:withdrawId", GetSingleWithdrawal);
 router.post("/", CreateWithdrawal);
 router.put("/:withdrawId", UpdateWithdrawal);
