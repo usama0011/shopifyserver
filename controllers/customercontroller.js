@@ -31,18 +31,6 @@ export const GetSingleQuery = async (req, res, next) => {
 export const CreateQueryCustomer = async (req, res, next) => {
   try {
     const { userId, fullname, email, message } = req.body;
-
-    // Check if a Order with the same name already exists for the given branch
-    const expistingorder = await CustomerModel.findOne({
-      ordername,
-    });
-    if (expistingorder) {
-      return res.status(400).json({
-        message: "Order with the same name already exists",
-      });
-    }
-
-    // Create a new Order instance
     const newCustomerquery = new CustomerModel({
       userId,
       fullname,
