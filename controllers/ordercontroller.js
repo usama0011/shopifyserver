@@ -141,3 +141,15 @@ export const DeleteOrder = async (req, res, next) => {
       .json({ error: "Internal Server Error", errormsg: error.message });
   }
 };
+
+export const getAdminsOrders = async (req, res, next) => {
+  try {
+    const UpdateOrderRecord = await OrderModel.find();
+    res.status(200).json(UpdateOrderRecord);
+  } catch (error) {
+    console.error("Error getting Order record by ID:", error);
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", errormsg: error.message });
+  }
+};
