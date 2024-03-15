@@ -3,8 +3,11 @@ import SubmitOrders from "../models/submitordersmodel.js";
 export const GetallOrders = async (req, res, next) => {
   try {
     const userId = req.user.user_id;
+
+    // Find all orders
     const allOrders = await OrderModel.find();
 
+    // Find submitted order IDs for the user
     const submittedOrderIds = await SubmitOrders.find({ userId }).distinct(
       "orderId"
     );
@@ -14,13 +17,20 @@ export const GetallOrders = async (req, res, next) => {
       orderId.toString()
     );
 
-    const ordersToDisplay = allOrders.filter(
+    // Find the first order that hasn't been submitted by the user
+    const nextOrder = allOrders.find(
       (order) => !submittedOrderStrings.includes(order._id.toString())
     );
 
-    res.status(200).json(ordersToDisplay);
+    if (!nextOrder) {
+      // If all orders have been submitted, send a message indicating so
+      res.status(200).json({ message: "All orders have been completed" });
+    } else {
+      // If there's a next order, send it to the user
+      res.status(200).json(nextOrder);
+    }
   } catch (error) {
-    console.error("Error getting orders records:", error);
+    console.error("Error getting next order:", error);
     res
       .status(500)
       .json({ error: "Internal Server Error", errormsg: error.message });
