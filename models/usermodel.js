@@ -13,7 +13,7 @@ const userSchema = new Schema(
       required: true,
     },
     phonenumber: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
     },
@@ -52,13 +52,6 @@ const userSchema = new Schema(
     isAdmin: {
       type: Boolean,
       default: false,
-    },
-    isVerified: {
-      type: Boolean,
-      default: false,
-    },
-    verificationCode: {
-      type: String,
     },
     referralCode: {
       type: String,
