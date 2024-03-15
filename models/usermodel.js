@@ -35,7 +35,7 @@ const userSchema = new Schema(
     },
     pendingtasks: {
       type: Number,
-      default: 0,
+      default: 15,
     },
     completedtasks: {
       type: Number,
