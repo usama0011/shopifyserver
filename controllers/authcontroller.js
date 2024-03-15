@@ -59,6 +59,7 @@ export const LoginUser = async (req, res) => {
         user_id: user._id,
         fullname: user.fullname,
         isAdmin: user.isAdmin,
+        isVerified: user.isVerified,
       },
       "8923r4u9832u423iu",
       { expiresIn: "1d" }
