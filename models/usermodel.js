@@ -69,5 +69,26 @@ const userSchema = new Schema(
   },
   { timestamps: true }
 );
+userSchema.pre("save", async function (next) {
+  // Generate a 5-digit referral code
+  const generateReferralCode = () => {
+    const min = 10000;
+    const max = 99999;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  // Check if the referral code already exists
+  if (!this.referralCode) {
+    let referralCode;
+    do {
+      referralCode = generateReferralCode().toString();
+      const existingUser = await this.constructor.findOne({ referralCode });
+      if (!existingUser) break;
+    } while (true);
+    this.referralCode = referralCode;
+  }
+  next();
+});
+
 
 export default mongoose.model("User", userSchema);
