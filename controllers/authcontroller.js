@@ -23,6 +23,7 @@ export const RegisteredUser = async (req, res) => {
       phonenumber,
       password: hashedPassword,
       invitationcode,
+      bonusamount: 0
     });
     await newUser.save();
 
@@ -60,6 +61,7 @@ export const LoginUser = async (req, res) => {
         fullname: user.fullname,
         isAdmin: user.isAdmin,
         isVerified: user.isVerified,
+        referralCode: user.referralCode
       },
       "8923r4u9832u423iu",
       { expiresIn: "1d" }

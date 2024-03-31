@@ -13,6 +13,7 @@ import submitorderroute from "./routes/submitorderroute.js";
 import rechargeroute from "./routes/rechargeroute.js";
 import receiptrecord from "./routes/rechargereceiptroute.js";
 import withdrawreceipt from "./routes/withdrawreceiptroute.js";
+import reffaralroute from "./routes/refferalroute.js";
 const app = express();
 dotenv.config();
 
@@ -54,6 +55,7 @@ app.use("/api/submitorder", submitorderroute);
 app.use("/api/recharge", rechargeroute);
 app.use("/api/receipt", receiptrecord);
 app.use("/api/withdrawreceipt", withdrawreceipt);
+app.use("/api/refferals", reffaralroute);
 // Error handling middleware
 // Error handling middleware
 app.use((err, req, res, next) => {
