@@ -84,6 +84,7 @@ export const LoginUser = async (req, res) => {
         frozenAmount: user.frozenamount,
         orderQuantity: user.orderquantitiy,
         availableBalance: user.availableBalance,
+        referralCode: user.referralCode
       });
   } catch (error) {
     console.log(error.message);
