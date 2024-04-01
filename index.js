@@ -14,6 +14,7 @@ import rechargeroute from "./routes/rechargeroute.js";
 import receiptrecord from "./routes/rechargereceiptroute.js";
 import withdrawreceipt from "./routes/withdrawreceiptroute.js";
 import reffaralroute from "./routes/refferalroute.js";
+import popuproute from "./routes/popuproute.js";
 const app = express();
 dotenv.config();
 
@@ -56,6 +57,7 @@ app.use("/api/recharge", rechargeroute);
 app.use("/api/receipt", receiptrecord);
 app.use("/api/withdrawreceipt", withdrawreceipt);
 app.use("/api/refferals", reffaralroute);
+app.use("/api/popup", popuproute);
 // Error handling middleware
 // Error handling middleware
 app.use((err, req, res, next) => {
